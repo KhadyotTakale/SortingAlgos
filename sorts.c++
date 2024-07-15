@@ -78,31 +78,26 @@ void mergesort(int* arr, int low, int high){
 }
 
 
-int partition(vector<int> &arr, int low, int high){
-    int pivot = arr[low];
-    int i = low;
-    int j = high;
-    while(i < j){
-        while(arr[i] <= pivot && i <= high - 1){
-            i++;
-        }
-        while(arr[j] > pivot && j >= low + 1){
-            j--;
-        } 
-        if(i < j){
-            swap(arr[i],arr[j]);
+int partition(vector<int> &arr, int start, int end) {
+    int pivot = arr[end];
+    int p = start;
+
+    for (int i = start; i < end; i++) {
+        if (arr[i] < pivot) {
+            swap(arr[i], arr[p]);
+            p++;
         }
     }
-    swap(arr[low],arr[j]);
-    return j;
+    swap(arr[p], arr[end]);
+    return p;
 }
 
-
-void quicksort(vector<int> &arr, int low, int high) {
-    if (low < high) {
-        int pivIndex = partition(arr, low, high);
-        quicksort(arr, low, pivIndex - 1);
-        quicksort(arr, pivIndex + 1, high);
+void quicksort(vector<int> &arr, int start, int end) {
+    if (start < end) {
+        int p = partition(arr, start, end);
+        
+        quicksort(arr, start, p - 1);
+        quicksort(arr, p + 1, end);
     }
 }
 
