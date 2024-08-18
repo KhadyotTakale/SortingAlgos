@@ -35,7 +35,7 @@ void selectionsort(int *arr,int n){
 }
 
 
-void merge(int* &arr,int low,int mid, int high){
+void merge(vector<int>&arr,int low,int mid, int high){
     vector<int> temp;
     int left = low;
     int right = mid+1;
@@ -66,7 +66,7 @@ void merge(int* &arr,int low,int mid, int high){
     }
 }
 
-void mergesort(int* arr, int low, int high){
+void mergesort(vector<int> &arr, int low, int high){
 
     if(low == high) return;
     int mid = (low + high)/2;
